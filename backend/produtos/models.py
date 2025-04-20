@@ -1,16 +1,13 @@
 from django.db import models
 
-
 class Categoria(models.Model):
     nome = models.CharField(max_length=100)
     def __str__(self):
-        return self.nome
-
+        return f'{self.nome}'
 
 class Produto(models.Model):
     # def get_produto(self):
         
-    
     codigo = models.BigIntegerField(unique=True)
     nome = models.CharField(max_length=100)
     preco_custo = models.DecimalField(max_digits=7, decimal_places=2)
