@@ -73,14 +73,15 @@ class CategoriaSerializer(serializers.Serializer):
 class ProdutoSerializer(serializers.ModelSerializer):
     categoria_link = serializers.HyperlinkedRelatedField(
         source='categoria',
-        queryset=Categoria.objects.all(),
+        # queryset=Categoria.objects.all(),
         # many=True,
+        read_only=True,
         view_name='api:produto-categoria',
     )
         
     class Meta: # Onde é definido o model que ele usa e os campos que vai trazer
         model = Produto
-        fields = '__all__'
+        fields = ['codigo', 'nome', 'estoque', 'categoria', 'categoria_link']
     
     
     
